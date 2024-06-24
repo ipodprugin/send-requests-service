@@ -11,11 +11,12 @@
 По заданию нужно использовать потоки, поэтому запросы отправляю не через `aiohttp`, а через `requests` в потоке.
 
 ```bash
-git clone  && cd 
+git clone https://github.com/ipodprugin/send-requests-service.git && cd send-requests-service
 cp example.env .env
 ```
 
 Тестовые данные для таблицы `queue_requests` можно положить в `db/dbdata.sql`
+
 ## Запуск:
 
 ```bash
