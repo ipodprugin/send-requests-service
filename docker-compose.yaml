@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  s1:
+    container_name: s1
+    build: .
+    depends_on:
+      - s1-db
+    command: bash -c 'python3 app/app.py'
+    volumes:
+      - ./app:/src/app/
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  s1-db:
+    container_name: s1-db
+    image: postgres
+    build:
+      context: db
+      dockerfile: Dockerfile
+    ports:
+      - 5432:5432
+    volumes:
+      - dbdata:/var/lib/postgres/data
+    env_file:
+      - .env
+    restart: unless-stopped
+
+volumes:
+  dbdata:
